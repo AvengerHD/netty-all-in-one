@@ -1,12 +1,13 @@
 package com.avenger.netty.time;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-
-import java.util.Objects;
 
 public class TimeServer {
     public void bind(int port) throws Exception{
@@ -37,15 +38,4 @@ public class TimeServer {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        int port = 8080;
-        if (!Objects.isNull(args) && args.length > 0){
-            try {
-                port = Integer.valueOf(args[0]);
-            } catch (NumberFormatException e){
-                //do nothing, remain default port
-            }
-        }
-        new TimeServer().bind(port);
-    }
 }

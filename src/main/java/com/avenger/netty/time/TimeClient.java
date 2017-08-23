@@ -9,8 +9,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-import java.util.Objects;
-
 public class TimeClient {
     public void connect(int port, String host) throws Exception{
         EventLoopGroup group = new NioEventLoopGroup();
@@ -32,15 +30,4 @@ public class TimeClient {
         }
     }
 
-    public static void main(String[] args) throws Exception{
-        int port = 8080;
-        if (!Objects.isNull(args) && args.length > 0){
-            try {
-                port = Integer.valueOf(args[0]);
-            } catch (NumberFormatException e){
-                //do nothing
-            }
-        }
-        new TimeClient().connect(port, "127.0.0.1");
-    }
 }
